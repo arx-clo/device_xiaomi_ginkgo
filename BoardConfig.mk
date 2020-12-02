@@ -204,6 +204,7 @@ TARGET_VENDOR_PROP += $(DEVICE_PATH)/props/vendor.prop
 
 # Power
 TARGET_POWERHAL_MODE_EXT := $(DEVICE_PATH)/power/power-mode.cpp
+TARGET_USES_INTERACTION_BOOST := true
 
 # Recovery
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/etc/fstab.qcom
