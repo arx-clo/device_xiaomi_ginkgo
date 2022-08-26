@@ -363,6 +363,7 @@ PRODUCT_ODM_PROPERTIES += \
 # QTI Component
 TARGET_COMMON_QTI_COMPONENTS := \
     gps\
+    av \
     bt \
     perf \
     vibrator
