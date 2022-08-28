@@ -358,10 +358,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libqti-perfd-client
 
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/perf/msm_irqbalance.conf:$(TARGET_COPY_OUT_VENDOR)/etc/msm_irqbalance.conf \
-    $(LOCAL_PATH)/configs/perf/powerhint.json:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.json
-
 # Platform
 TARGET_BOARD_PLATFORM := trinket
 TRINKET := trinket
@@ -369,6 +365,10 @@ TRINKET := trinket
 # QTI VNDK Framework Detect
 PRODUCT_ODM_PROPERTIES += \
     ro.vendor.qti.va_odm.support=1
+
+# QTI Component
+TARGET_COMMON_QTI_COMPONENTS := \
+    perf
 
 # Ramdisk
 PRODUCT_PACKAGES += \
