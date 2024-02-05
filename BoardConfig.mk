@@ -238,7 +238,8 @@ BOARD_AVB_MAKE_VBMETA_IMAGE_ARGS += --flags 3
 VENDOR_SECURITY_PATCH := $(PLATFORM_SECURITY_PATCH)
 
 BOARD_SEPOLICY_M4DEFS += \
-     sysfs_battery_supply=vendor_sysfs_battery_supply
+     sysfs_battery_supply=vendor_sysfs_battery_supply \
+     sysfs_usb_supply=vendor_sysfs_usb_supply
 
 # WiFi
 BOARD_WLAN_DEVICE := qcwcn
