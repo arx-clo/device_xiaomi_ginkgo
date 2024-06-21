@@ -357,7 +357,8 @@ PRODUCT_ODM_PROPERTIES += \
 
 # QTI Component
 TARGET_COMMON_QTI_COMPONENTS := \
-    gps\
+    alarm \
+    gps \
     av \
     bt \
     perf \
