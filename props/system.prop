@@ -3,18 +3,6 @@ suspend.short_suspend_threshold_millis=2000
 suspend.short_suspend_backoff_enabled=true
 suspend.max_sleep_time_millis=40000
 
-# Bluetooth
-persist.bluetooth.bqr.event_mask=14
-persist.bluetooth.bqr.min_interval_ms=500
-persist.vendor.bt.a2dp_offload_cap=sbc-aptx-aptxtws-aptxhd-aac
-persist.vendor.bt.a2dp.aac_whitelist=false
-persist.vendor.bt.a2dp.hal.implementation=true
-persist.vendor.bt.a2dp.mac_whitelist=false
-persist.vendor.btstack.a2dp_offload_cap=sbc-aptx-aptxtws-aptxhd-aac-ldac
-persist.vendor.btstack.absvolfeature=true
-persist.vendor.btstack.enable.splita2dp=true
-vendor.bluetooth.soc=cherokee
-
 # Blur
 persist.sys.sf.disable_blurs=1
 
