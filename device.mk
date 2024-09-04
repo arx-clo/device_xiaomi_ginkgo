@@ -17,16 +17,26 @@ $(call inherit-product, hardware/qcom-caf/common/common.mk)
 # Private Keys
 -include vendor/lineage-priv/keys/keys.mk
 
-# Overlays
-DEVICE_PACKAGE_OVERLAYS += \
-    $(LOCAL_PATH)/overlay \
-    $(LOCAL_PATH)/overlay-lineage
-
 PRODUCT_PACKAGES += \
     GinkgoMiuiCamera \
     GinkgoNoCutoutOverlay \
     NotchBarKiller \
     WillowFrameworkRes
+
+# RRO Overlays
+PRODUCT_PACKAGES += \
+    CarrierConfigOverlayGinkgo \
+    FrameworksOverlayGinkgo \
+    FrameworksOverlayWillow \
+    NoCutoutOverlayGinkgo \
+    NotchBarKillerOverlayGinkgo\
+    SettingsLibOverlayGinkgo \
+    SettingsOverlayGinkgo \
+    SettingsProviderOverlayGinkgo \
+    SystemUIOverlayGinkgo \
+    TelephonyOverlayGinkgo \
+    TetheringOverlayGinkgo \
+    WifiOverlayGinkgo
 
 # ANT+
 PRODUCT_PACKAGES += \
@@ -533,8 +543,6 @@ PRODUCT_PACKAGES += \
     libwifi-hal-ctrl \
     libwifi-hal-qcom \
     libwpa_client \
-    TetheringConfigOverlay \
-    WifiOverlay \
     wpa_cli \
     wpa_supplicant \
     wpa_supplicant.conf \

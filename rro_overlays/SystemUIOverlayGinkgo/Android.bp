@@ -1,0 +1,6 @@
+runtime_resource_overlay {
+    name: "SystemUIOverlayGinkgo",
+    theme: "SystemUIOverlayGinkgo",
+    sdk_version: "current",
+    vendor: true,
+}

@@ -1,0 +1,6 @@
+runtime_resource_overlay {
+    name: "SettingsProviderOverlayGinkgo",
+    theme: "SettingsProviderOverlayGinkgo",
+    sdk_version: "current",
+    vendor: true,
+}

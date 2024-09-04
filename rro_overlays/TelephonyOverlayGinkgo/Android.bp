@@ -1,0 +1,6 @@
+runtime_resource_overlay {
+    name: "TelephonyOverlayGinkgo",
+    theme: "TelephonyOverlayGinkgo",
+    sdk_version: "current",
+    vendor: true,
+}
