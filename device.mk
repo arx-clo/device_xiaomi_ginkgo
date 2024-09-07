@@ -102,7 +102,6 @@ PRODUCT_PACKAGES += \
     android.frameworks.displayservice@1.0.vendor \
     android.hardware.camera.provider@2.4-impl-ginkgo \
     android.hardware.camera.provider@2.4-service \
-    android.hidl.memory.block@1.0.vendor \
     vendor.qti.hardware.camera.device@1.0.vendor \
     libpiex_shim
 
@@ -347,13 +346,6 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.nfc.hcef.xml:$(TARGET_COPY_OUT_ODM)/etc/permissions/sku_willow/android.hardware.nfc.hcef.xml \
     frameworks/native/data/etc/android.hardware.nfc.uicc.xml:$(TARGET_COPY_OUT_ODM)/etc/permissions/sku_willow/android.hardware.nfc.uicc.xml
 
-# Parts
-PRODUCT_PACKAGES += \
-    XiaomiParts
-
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/parts/init.xiaomiparts.rc:$(TARGET_COPY_OUT_SYSTEM)/etc/init/init.xiaomiparts.rc
-
 PRODUCT_BROKEN_VERIFY_USES_LIBRARIES := true
 
 # Partitions
@@ -374,14 +366,7 @@ PRODUCT_COPY_FILES += \
 TARGET_BOARD_PLATFORM := trinket
 TRINKET := trinket
 
-
 # QTI VNDK Framework Detect
-PRODUCT_PACKAGES += \
-    libvndfwk_detect_jni.qti \
-    libqti_vndfwk_detect \
-    libvndfwk_detect_jni.qti.vendor \
-    libqti_vndfwk_detect.vendor
-
 PRODUCT_ODM_PROPERTIES += \
     ro.vendor.qti.va_odm.support=1
 
@@ -423,10 +408,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     libjson \
     libprotobuf-cpp-full \
-    libprotobuf-cpp-full-3.9.1-vendorcompat \
-    libprotobuf-cpp-lite-3.9.1-vendorcompat \
     librmnetctl \
-    libsqlite.vendor:64
 
 PRODUCT_PACKAGES += \
     android.hardware.radio@1.5.vendor \
@@ -473,22 +455,7 @@ PRODUCT_PACKAGES += \
 # Soong namespace
 PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH) \
-    hardware/google/interfaces \
-    hardware/google/pixel \
-    hardware/qcom-caf/common/libqti-perfd-client
-
-# Telephony
-PRODUCT_PACKAGES += \
-    extphonelib \
-    extphonelib.xml \
-    qti-telephony-hidl-wrapper \
-    qti_telephony_hidl_wrapper.xml \
-    qti-telephony-utils \
-    qti_telephony_utils.xml \
-    telephony-ext
-
-PRODUCT_BOOT_JARS += \
-    telephony-ext
+        hardware/qcom-caf/common/libqti-perfd-client
 
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.sip.voip.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.sip.voip.xml \
@@ -536,7 +503,6 @@ PRODUCT_PACKAGES += \
     hostapd \
     libwifi-hal-ctrl \
     libwifi-hal-qcom \
-    libwpa_client \
     wpa_cli \
     wpa_supplicant \
     wpa_supplicant.conf \
