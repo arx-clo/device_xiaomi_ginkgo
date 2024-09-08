@@ -571,4 +571,13 @@
             <instance>qccvndhal</instance>
         </interface>
     </hal>
+    <hal format="hidl" optional="true">
+        <name>android.hardware.radio</name>
+        <version>1.0-6</version>
+        <interface>
+            <name>IRadio</name>
+            <instance>slot1</instance>
+            <instance>slot2</instance>
+        </interface>
+    </hal>
 </compatibility-matrix>
