@@ -145,21 +145,7 @@ PRODUCT_DEXPREOPT_SPEED_APPS += \
 
 # Display
 PRODUCT_PACKAGES += \
-    android.hardware.graphics.composer@2.4-service \
-    android.hardware.graphics.mapper@3.0-impl-qti-display \
-    android.hardware.graphics.mapper@4.0-impl-qti-display \
-    vendor.qti.hardware.memtrack-service \
-    hwcomposer.qcom \
-    gralloc.qcom \
-    libdisplayconfig.qti \
-    libtinyxml \
-    libtinyxml2 \
-    libvulkan \
-    vendor.qti.hardware.display.allocator-service \
-    vendor.qti.hardware.display.mapper@2.0.vendor
-
-PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/android.hardware.touchscreen.multitouch.jazzhand.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.touchscreen.multitouch.jazzhand.xml
+    android.frameworks.displayservice@1.0.vendor
 
 # Screen Resolution
 TARGET_SCREEN_HEIGHT := 2340
@@ -353,6 +339,7 @@ PRODUCT_ODM_PROPERTIES += \
 # QTI Component
 TARGET_COMMON_QTI_COMPONENTS := \
     adreno \
+    display \
     alarm \
     gps \
     av \
