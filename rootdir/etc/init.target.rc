@@ -203,6 +203,7 @@ on charger
     setprop sys.usb.configfs 1
     mkdir /data/vendor/charge_logger 0771 system system
     start charge_logger
+    start vendor.health-hal-2-0
 
 on property:vendor.display.lcd_density=640
    setprop dalvik.vm.heapgrowthlimit 512m
