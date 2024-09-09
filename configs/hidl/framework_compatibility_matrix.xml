@@ -536,4 +536,48 @@
             <instance>slot2</instance>
         </interface>
     </hal>
+    <hal format="aidl" optional="true">
+       <name>android.hardware.wifi</name>
+        <interface>
+           <name>IWifi</name>
+           <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl" optional="true">
+       <name>android.hardware.wifi.hostapd</name>
+        <interface>
+           <name>IHostapd</name>
+           <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl" optional="true">
+       <name>android.hardware.wifi.supplicant</name>
+        <interface>
+           <name>ISupplicant</name>
+           <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl" optional="true">
+       <name>vendor.qti.hardware.wifi.supplicant</name>
+        <interface>
+           <name>ISupplicantVendor</name>
+           <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+       <name>vendor.qti.hardware.wifi.wifilearner</name>
+        <version>1.0</version>
+        <interface>
+           <name>IWifiStats</name>
+           <instance>wifiStats</instance>
+        </interface>
+    </hal>
+    <hal format="hidl">
+        <name>vendor.qti.hardware.wifi.wificfr</name>
+        <version>1.0</version>
+        <interface>
+            <name>IWificfr</name>
+            <instance>wificfr</instance>
+        </interface>
+    </hal>
 </compatibility-matrix>
