@@ -3,3 +3,5 @@ rw_dir_file(vendor_hvdcp, sysfs)
 allow vendor_hvdcp sysfs_batteryinfo:dir search;
 allow vendor_hvdcp sysfs:file { open read };
 set_prop(vendor_hvdcp, ctl_stop_prop)
+allow vendor_hvdcp sysfs_wakeup:dir r_dir_perms;
+allow vendor_hvdcp sysfs_wakeup:file rw_file_perms;
