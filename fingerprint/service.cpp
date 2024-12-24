@@ -16,6 +16,7 @@
 
 #define LOG_TAG "android.hardware.biometrics.fingerprint@2.1-service.ginkgo"
 
+#include <android/log.h>
 #include <hidl/HidlTransportSupport.h>
 
 #include "BiometricsFingerprint.h"
@@ -25,7 +26,6 @@ using android::hardware::configureRpcThreadpool;
 using android::hardware::joinRpcThreadpool;
 
 // Generated HIDL files
-using android::sp;
 using android::hardware::biometrics::fingerprint::V2_1::IBiometricsFingerprint;
 using android::hardware::biometrics::fingerprint::V2_1::implementation::BiometricsFingerprint;
 
@@ -47,5 +47,5 @@ int main() {
 
     joinRpcThreadpool();
 
-    return 0;  // should never get here
+    return 0; // should never get here
 }

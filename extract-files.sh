@@ -59,15 +59,12 @@ function blob_fixup() {
             # Remove vtcamera for ginkgo
             gawk -i inplace '{ p = 1 } /<CameraModuleConfig>/{ t = $0; while (getline > 0) { t = t ORS $0; if (/ginkgo_vtcamera/) p = 0; if (/<\/CameraModuleConfig>/) break } $0 = t } p' "${2}"
             ;;
-        vendor/bin/sensors.qti | vendor/lib/libsnsapi.so | vendor/lib/libsnsdiaglog.so | vendor/lib/libssc.so | vendor/lib/sensors.ssc.so | vendor/lib64/libsnsapi.so | vendor/lib64/libsnsdiaglog.so | vendor/lib64/libssc.so | vendor/lib64/libwvhidl.so | vendor/lib64/mediadrm/libwvdrmengine.so | vendor/lib64/sensors.ssc.so)
-            "${PATCHELF}" --replace-needed "libprotobuf-cpp-lite-3.9.1.so" "libprotobuf-cpp-full-3.9.1.so" "${2}"
-            ;;
 		vendor/lib64/libvendor.goodix.hardware.interfaces.biometrics.fingerprint@2.1.so | vendor/lib64/libgoodixhwfingerprint.so)
 			grep -q "libhidlbase-v32.so" "${2}" || "${PATCHELF_0_17_2}" --replace-needed "libhidlbase.so" "libhidlbase-v32.so" "${2}"
         ;;
-        vendor/lib/libstagefright_soft_ac4dec.so | vendor/lib/libstagefright_soft_ddpdec.so | vendor/lib/libstagefrightdolby.so | vendor/lib64/libdlbdsservice.so | vendor/lib64/libstagefright_soft_ac4dec.so | vendor/lib64/libstagefright_soft_ddpdec.so | vendor/lib64/libstagefrightdolby.so)
-            grep -q "libstagefright_foundation-v33.so" "${2}" || "${PATCHELF}" --replace-needed "libstagefright_foundation.so" "libstagefright_foundation-v33.so" "${2}"
-            ;;
+        vendor/lib64/libwvhidl.so | vendor/lib64/mediadrm/libwvdrmengine.so)
+	        "${PATCHELF}" --replace-needed "libcrypto.so" "libcrypto-v33.so" "${2}"
+	        ;;
     esac
 }
 

@@ -8,22 +8,15 @@
 # Vendor blobs
 $(call inherit-product, vendor/xiaomi/ginkgo/ginkgo-vendor.mk)
 
+# Enable updating of APEXes
+$(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
+
 # Add common definitions for Qualcomm
 $(call inherit-product, hardware/qcom-caf/common/common.mk)
 
-# Private Keys
--include vendor/lineage-priv/keys/keys.mk
-
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
-    $(LOCAL_PATH)/overlay \
-    $(LOCAL_PATH)/overlay-lineage
-
-# Overlays - RU translations
-DEVICE_PACKAGE_OVERLAYS += \
-    packages/resources/translations/overlay
-PRODUCT_ENFORCE_RRO_EXCLUDED_OVERLAYS += \
-    packages/resources/translations/overlay
+    $(LOCAL_PATH)/overlay
 
 PRODUCT_PACKAGES += \
     GinkgoMiuiCamera \
@@ -34,9 +27,6 @@ PRODUCT_PACKAGES += \
 # ANT+
 PRODUCT_PACKAGES += \
     com.dsi.ant@1.0.vendor
-
-# Enable project quotas and casefolding for emulated storage without sdcardfs
-$(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
 
 # Audio
 PRODUCT_PACKAGES += \
@@ -84,12 +74,6 @@ PRODUCT_PACKAGES += \
     android.hardware.bluetooth@1.1.vendor \
     android.hardware.bluetooth.audio-impl \
     audio.bluetooth.default \
-    com.qualcomm.qti.bluetooth_audio@1.0.vendor \
-    libbtconfigstore \
-    libbthost_if \
-    libldacBT_enc \
-    libldacBT_abr \
-    libldacBT_bco \
     vendor.qti.hardware.bluetooth_audio@2.1.vendor \
     vendor.qti.hardware.btconfigstore@1.0.vendor \
     vendor.qti.hardware.btconfigstore@2.0.vendor
@@ -98,8 +82,12 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.bluetooth_le.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.bluetooth_le.xml \
     frameworks/native/data/etc/android.hardware.bluetooth.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.bluetooth.xml
 
+# Call recording
+PRODUCT_PACKAGES += \
+    com.google.android.apps.dialer.call_recording_audio.features.xml
+
 # Camera
-$(call inherit-product-if-exists, vendor/xiaomi/miuicamera/config.mk)
+$(call inherit-product, vendor/miuicamera/config.mk)
 
 PRODUCT_PACKAGES += \
     android.frameworks.displayservice@1.0.vendor \
@@ -115,6 +103,10 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.camera.full.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.camera.full.xml \
     frameworks/native/data/etc/android.hardware.camera.raw.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.camera.raw.xml
 
+PRODUCT_SYSTEM_PROPERTIES += \
+    vendor.camera.aux.packagelist=org.codeaurora.snapcam,com.android.camera \
+    persist.vendor.camera.privapp.list=org.codeaurora.snapcam,com.android.camera
+
 # Charger
 PRODUCT_PACKAGES += \
     libsuspend
@@ -127,18 +119,24 @@ PRODUCT_PACKAGES += \
 PRODUCT_AAPT_CONFIG := normal
 PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 
+# Dexpreopt
+PRODUCT_DEXPREOPT_SPEED_APPS += \
+    SystemUI
+
+# Display
 PRODUCT_PACKAGES += \
-    android.hardware.graphics.composer@2.4-impl \
     android.hardware.graphics.composer@2.4-service \
     android.hardware.graphics.mapper@3.0-impl-qti-display \
     android.hardware.graphics.mapper@4.0-impl-qti-display \
-    vendor.qti.hardware.memtrack-service \
+    android.hardware.memtrack@1.0-impl \
+    android.hardware.memtrack@1.0-service \
     gralloc.trinket \
     hwcomposer.trinket \
     libdisplayconfig.qti \
     libtinyxml \
     libtinyxml2 \
     libvulkan \
+    memtrack.trinket \
     vendor.qti.hardware.display.allocator-service \
     vendor.qti.hardware.display.mapper@2.0.vendor
 
@@ -150,41 +148,16 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.vulkan.level-1.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.vulkan.level-1.xml \
     frameworks/native/data/etc/android.hardware.vulkan.version-1_1.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.vulkan.version-1_1.xml
 
+
 # Screen Resolution
 TARGET_SCREEN_HEIGHT := 2340
 TARGET_SCREEN_WIDTH := 1080
 
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/flash_super_dummy.sh:install/bin/flash_super_dummy.sh
-
-# Dolby
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/dolby/dax-default.xml:$(TARGET_COPY_OUT_ODM)/etc/dolby/dax-default.xml \
-    $(LOCAL_PATH)/configs/dolby/media_codecs_dolby_audio.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_dolby_audio.xml \
-    $(LOCAL_PATH)/configs/dolby/config-com.dolby.daxappui.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/sysconfig/config-com.dolby.daxappui.xml \
-    $(LOCAL_PATH)/configs/dolby/config-com.dolby.daxservice.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/sysconfig/config-com.dolby.daxservice.xml \
-    $(LOCAL_PATH)/configs/dolby/hiddenapi-com.dolby.daxservice.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/sysconfig/hiddenapi-com.dolby.daxservice.xml \
-    $(LOCAL_PATH)/configs/dolby/privapp-com.dolby.daxappui.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/permissions/privapp-com.dolby.daxappui.xml \
-    $(LOCAL_PATH)/configs/dolby/privapp-com.dolby.daxservice.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/permissions/privapp-com.dolby.daxservice.xml
-
-# Dolby VNDK libs
-PRODUCT_COPY_FILES += \
-    prebuilts/vndk/v33/arm/arch-arm-armv7-a-neon/shared/vndk-core/libstagefright_foundation.so:$(TARGET_COPY_OUT_VENDOR)/lib/libstagefright_foundation-v33.so \
-    prebuilts/vndk/v33/arm64/arch-arm64-armv8-a/shared/vndk-core/libstagefright_foundation.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libstagefright_foundation-v33.so
-
 # DRM
 PRODUCT_PACKAGES += \
+    libcrypto-v33 \
     android.hardware.drm-service.clearkey \
     android.hardware.drm@1.3.vendor
-
-# Dynamic Partitions
-PRODUCT_BUILD_SUPER_PARTITION := false
-PRODUCT_USE_DYNAMIC_PARTITIONS := true
-PRODUCT_RETROFIT_DYNAMIC_PARTITIONS := true
-
-# Fastbootd
-PRODUCT_PACKAGES += \
-    fastbootd
 
 # Fingerprint
 PRODUCT_PACKAGES += \
@@ -201,10 +174,6 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PACKAGES += \
     android.hardware.broadcastradio@1.0-impl
-
-# Use FUSE passthrough
-PRODUCT_PRODUCT_PROPERTIES += \
-    persist.sys.fuse.passthrough.enable=true
 
 # Freeform Windows
 PRODUCT_COPY_FILES += \
@@ -232,15 +201,15 @@ PRODUCT_PACKAGES += \
 
 # HIDL
 PRODUCT_PACKAGES += \
-    android.hidl.base@1.0 \
     android.hidl.base@1.0.vendor \
-    android.hidl.manager@1.0 \
     android.hidl.manager@1.0.vendor
 
 PRODUCT_PACKAGES += \
     libhidltransport.vendor \
+    libhwbinder \
     libhwbinder.vendor \
-    libhidlmemory.vendor
+    libhidlmemory.vendor \
+    fastcharge.sh 
 
 # IMS
 PRODUCT_PACKAGES += \
@@ -280,6 +249,14 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     android.hardware.light@2.0-service.ginkgo
 
+# Lineage Health
+PRODUCT_PACKAGES += \
+    vendor.lineage.health-service.default
+    
+# LiveDisplay
+PRODUCT_PACKAGES += \
+    vendor.lineage.livedisplay@2.0-service-sdm
+
 # Media
 PRODUCT_PACKAGES += \
     libc2dcolorconvert \
@@ -312,10 +289,6 @@ PRODUCT_COPY_FILES += \
     frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_video.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_c2_video.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_c2_video.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_video_le.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_video_le.xml
-
-# Lineage Health
-PRODUCT_PACKAGES += \
-    vendor.lineage.health-service.default
 
 # Netmgr
 PRODUCT_PACKAGES += \
@@ -391,24 +364,25 @@ PRODUCT_PACKAGES += \
     init.target.rc \
     ueventd.qcom.rc
 
+# USB debugging at boot
+PRODUCT_PROPERTY_OVERRIDES += \
+persist.sys.usb.config=mtp,adb \
+ro.adb.secure=0 \
+ro.secure=0 \
+ro.debuggable=1
+
 # RCS
 PRODUCT_PACKAGES += \
     com.android.ims.rcsmanager \
     PresencePolling \
     RcsService
 
-# Remove packages
-PRODUCT_PACKAGES += \
-    RemovePackages
-
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/etc/fstab.qcom:$(TARGET_COPY_OUT_RAMDISK)/fstab.qcom
-
 # RIL
 PRODUCT_PACKAGES += \
     libjson \
     libprotobuf-cpp-full \
     libprotobuf-cpp-full-3.9.1-vendorcompat \
+    libprotobuf-cpp-lite-3.9.1-vendorcompat \
     librmnetctl \
     libsqlite.vendor:64
 
@@ -417,6 +391,10 @@ PRODUCT_PACKAGES += \
     android.hardware.radio.config@1.2.vendor \
     android.hardware.radio.deprecated@1.0.vendor \
     android.hardware.secure_element@1.2.vendor
+
+# System
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.sys.binary_xml=false
 
 # Seccomp policy
 PRODUCT_COPY_FILES += \
@@ -451,22 +429,6 @@ PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH) \
     hardware/google/interfaces \
     hardware/google/pixel \
-    vendor/qcom/opensource/usb/etc
-
-# Speed profile services and wifi-service to reduce RAM and storage
-PRODUCT_SYSTEM_SERVER_COMPILER_FILTER := speed-profile
-PRODUCT_USE_PROFILE_FOR_BOOT_IMAGE := true
-PRODUCT_DEX_PREOPT_BOOT_IMAGE_PROFILE_LOCATION := frameworks/base/config/boot-image-profile.txt
-PRODUCT_ALWAYS_PREOPT_EXTRACTED_APK := true
-WITH_DEXPREOPT_DEBUG_INFO := false
-PRODUCT_DEXPREOPT_SPEED_APPS += \
-    Settings \
-    SystemUI \
-    TrebuchetQuickStep
-
-PRODUCT_DEX_PREOPT_DEFAULT_COMPILER_FILTER := verify
-PRODUCT_MINIMIZE_JAVA_DEBUG_INFO := true
-USE_DEX2OAT_DEBUG := false
 
 # Telephony
 PRODUCT_PACKAGES += \
@@ -534,7 +496,7 @@ PRODUCT_PACKAGES += \
     wpa_supplicant \
     wpa_supplicant.conf \
     vendor.qti.hardware.wifi.hostapd@1.1.vendor \
-    vendor.qti.hardware.wifi.supplicant@2.0.vendor
+    vendor.qti.hardware.wifi.supplicant@2.0.vendor 
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/wifi/hostapd.accept:$(TARGET_COPY_OUT_VENDOR)/etc/hostapd/hostapd.accept \
