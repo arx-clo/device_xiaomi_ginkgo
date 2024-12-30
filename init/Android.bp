@@ -24,3 +24,37 @@ cc_library_static {
     ],
     shared_libs: ["libbase"]
 }
+
+prebuilt_etc {
+    name: "fstab.qcom",
+    src: "fstab.qcom",
+    vendor: true,
+    required: ["fstab.qcom_ramdisk"],
+}
+
+prebuilt_etc {
+    name: "fstab.qcom_ramdisk",
+    src: "fstab.qcom",
+    filename_from_src: true,
+    ramdisk: true,
+}
+
+prebuilt_etc {
+    name: "init.ginkgo.rc",
+    src: "init.ginkgo.rc",
+    sub_dir: "init",
+    vendor: true,
+}
+
+prebuilt_etc {
+    name: "init.target.rc",
+    src: "init.target.rc",
+    sub_dir: "init/hw",
+    vendor: true,
+}
+
+sh_binary {
+    name: "init.qti.dcvs.sh",
+    src: "init.qti.dcvs.sh",
+    vendor: true,
+}

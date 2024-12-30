@@ -315,6 +315,7 @@ PRODUCT_ODM_PROPERTIES += \
 
 # QTI Component
 TARGET_COMMON_QTI_COMPONENTS := \
+    init \
     adreno \
     display \
     alarm \
@@ -333,16 +334,9 @@ TARGET_COMMON_QTI_COMPONENTS := \
 PRODUCT_PACKAGES += \
     fstab.qcom \
     fstab.qcom_ramdisk \
-    init.class_main.sh \
     init.ginkgo.rc \
-    init.qcom.early_boot.sh \
-    init.qcom.post_boot.sh \
-    init.qcom.rc \
-    init.qcom.sh \
     init.qti.dcvs.sh \
-    init.recovery.qcom.rc \
     init.target.rc \
-    ueventd.qcom.rc
 
 # USB debugging at boot
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -357,9 +351,8 @@ PRODUCT_PACKAGES += \
     PresencePolling \
     RcsService
 
-
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/etc/fstab.qcom:$(TARGET_COPY_OUT_RAMDISK)/fstab.qcom
+    $(LOCAL_PATH)/init/fstab.qcom:$(TARGET_COPY_OUT_RAMDISK)/fstab.qcom
 
 # RIL
 PRODUCT_PACKAGES += \
