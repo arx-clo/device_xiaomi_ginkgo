@@ -287,6 +287,10 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/keylayout/uinput-fpc.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/uinput-fpc.kl \
     $(LOCAL_PATH)/configs/keylayout/uinput-goodix.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/uinput-goodix.kl
 
+# Lights
+PRODUCT_PACKAGES += \
+    android.hardware.light-service.xiaomi
+
 # Media
 PRODUCT_PACKAGES += \
     libc2dcolorconvert \
@@ -454,7 +458,8 @@ PRODUCT_PACKAGES += \
 # Soong namespace
 PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH) \
-        hardware/qcom-caf/common/libqti-perfd-client
+        hardware/qcom-caf/common/libqti-perfd-client \
+        hardware/xiaomi
 
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.sip.voip.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.sip.voip.xml \
