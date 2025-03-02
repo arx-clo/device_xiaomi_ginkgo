@@ -110,6 +110,10 @@ PRODUCT_SYSTEM_PROPERTIES += \
     vendor.camera.aux.packagelist=org.codeaurora.snapcam,com.android.camera \
     persist.vendor.camera.privapp.list=org.codeaurora.snapcam,com.android.camera
 
+PRODUCT_COPY_FILES += \
+    vendor/xiaomi/ginkgo/proprietary/vendor/lib/libgrallocutils.so:$(TARGET_COPY_OUT_VENDOR)/lib/libgrallocutils.so \
+    vendor/xiaomi/ginkgo/proprietary/vendor/lib64/libgrallocutils.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libgrallocutils.so
+
 # Charger
 PRODUCT_PACKAGES += \
     libsuspend
