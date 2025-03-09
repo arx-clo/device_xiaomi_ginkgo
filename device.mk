@@ -14,15 +14,6 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
 # Add common definitions for Qualcomm
 $(call inherit-product, hardware/qcom-caf/common/common.mk)
 
-# Private Keys
--include vendor/lineage-priv/keys/keys.mk
-
-PRODUCT_PACKAGES += \
-    GinkgoMiuiCamera \
-    GinkgoNoCutoutOverlay \
-    NotchBarKiller \
-    WillowFrameworkRes
-
 # RRO Overlays
 PRODUCT_PACKAGES += \
     CarrierConfigOverlayGinkgo \
@@ -36,7 +27,11 @@ PRODUCT_PACKAGES += \
     SystemUIOverlayGinkgo \
     TelephonyOverlayGinkgo \
     TetheringOverlayGinkgo \
-    WifiOverlayGinkgo
+    WifiOverlayGinkgo \
+    GinkgoMiuiCamera \
+    GinkgoNoCutoutOverlay \
+    NotchBarKiller \
+    WillowFrameworkRes
 
 # ANT+
 PRODUCT_PACKAGES += \
@@ -101,7 +96,7 @@ PRODUCT_PACKAGES += \
     com.google.android.apps.dialer.call_recording_audio.features.xml
 
 # Camera
-$(call inherit-product, vendor/xiaomi/miuicamera/config.mk)
+# $(call inherit-product, vendor/xiaomi/miuicamera/config.mk)
 
 PRODUCT_PACKAGES += \
     android.frameworks.displayservice@1.0.vendor \
@@ -293,10 +288,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/keylayout/uinput-fpc.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/uinput-fpc.kl \
     $(LOCAL_PATH)/configs/keylayout/uinput-goodix.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/uinput-goodix.kl
 
-# Lights
-PRODUCT_PACKAGES += \
-    android.hardware.light-service.lineage
-
 # Media
 PRODUCT_PACKAGES += \
     libc2dcolorconvert \
@@ -373,7 +364,6 @@ PRODUCT_PACKAGES += \
 
 # Power
 PRODUCT_PACKAGES += \
-    android.hardware.power-service.lineage-libperfmgr \
     libqti-perfd-client
 
 PRODUCT_COPY_FILES += \
@@ -480,7 +470,6 @@ PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH) \
     hardware/google/interfaces \
     hardware/google/pixel \
-    hardware/lineage/interfaces/power-libperfmgr \
     hardware/qcom-caf/common/libqti-perfd-client
 
 # Telephony
