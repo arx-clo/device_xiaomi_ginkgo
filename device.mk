@@ -203,11 +203,6 @@ PRODUCT_PRODUCT_PROPERTIES += \
 PRODUCT_COPY_FILES += \
     $(call find-copy-subdir-files,*,$(LOCAL_PATH)/configs/gps/,$(TARGET_COPY_OUT_VENDOR)/etc)
 
-# Health
-PRODUCT_PACKAGES += \
-    android.hardware.health@2.1-impl \
-    android.hardware.health@2.1-service
-
 PRODUCT_PACKAGES += \
     libhidltransport.vendor \
     libhwbinder \
@@ -323,6 +318,7 @@ TARGET_COMMON_QTI_COMPONENTS := \
     adreno \
     display \
     alarm \
+    charging \
     gps \
     av \
     bt \
