@@ -11,9 +11,6 @@ $(call inherit-product, vendor/xiaomi/ginkgo/ginkgo-vendor.mk)
 # Enable updating of APEXes
 $(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
 
-# Add common definitions for Qualcomm
-$(call inherit-product, hardware/qcom-caf/common/common.mk)
-
 # RRO Overlays
 PRODUCT_PACKAGES += \
     CarrierConfigOverlayGinkgo \
@@ -212,15 +209,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.freeform_window_management.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.freeform_window_management.xml
 
-# GPS
-PRODUCT_PACKAGES += \
-    android.hardware.gnss@2.1-impl-qti \
-    android.hardware.gnss@2.1-service-qti \
-    libavservices_minijail.vendor \
-    libbatching \
-    libgeofencing \
-    libgnss
-
 # Gboard paddings
 # Keyboard height ratio and bottom padding in dp for portrait mode
 PRODUCT_PRODUCT_PROPERTIES += \
@@ -228,10 +216,7 @@ PRODUCT_PRODUCT_PROPERTIES += \
     ro.com.google.ime.kb_pad_port_b=8
 
 PRODUCT_COPY_FILES += \
-    $(call find-copy-subdir-files,*,$(LOCAL_PATH)/gps/etc/,$(TARGET_COPY_OUT_VENDOR)/etc)
-
-PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/android.hardware.location.gps.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.location.gps.xml
+    $(call find-copy-subdir-files,*,$(LOCAL_PATH)/configs/gps/,$(TARGET_COPY_OUT_VENDOR)/etc)
 
 # Health
 PRODUCT_PACKAGES += \
@@ -372,7 +357,8 @@ PRODUCT_ODM_PROPERTIES += \
 
 # QTI Component
 TARGET_COMMON_QTI_COMPONENTS := \
-    perf
+    perf \
+    gps
 
 # Ramdisk
 PRODUCT_PACKAGES += \
@@ -458,8 +444,6 @@ PRODUCT_PACKAGES += \
 # Soong namespace
 PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH) \
-        hardware/qcom-caf/common/libqti-perfd-client \
-        hardware/xiaomi
 
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.sip.voip.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.sip.voip.xml \

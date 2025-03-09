@@ -29,13 +29,16 @@ source "${HELPER}"
 function vendor_imports() {
     cat <<EOF >>"$1"
        "device/xiaomi/ginkgo",
-       "hardware/qcom-caf/sm8150",
-       "hardware/qcom-caf/wlan",
-       "vendor/qcom/opensource/commonsys/display",
-       "vendor/qcom/opensource/commonsys-intf/display",
+       "hardware/qcom/display",
+       "hardware/qcom/display/gralloc",
+       "hardware/qcom/display/libdebug",
+       "vendor/qcom/common/system/av",
+       "vendor/qcom/common/system/wfd",
+       "vendor/qcom/common/vendor/adreno-r",
+       "vendor/qcom/common/vendor/display/4.14",
+       "vendor/qcom/common/vendor/media-legacy",
        "vendor/qcom/opensource/dataservices",
-       "vendor/qcom/opensource/data-ipa-cfg-mgr-legacy-um",
-       "vendor/qcom/opensource/display",
+       "vendor/qcom/opensource/data-ipa-cfg-mgr",
 EOF
 }
 
