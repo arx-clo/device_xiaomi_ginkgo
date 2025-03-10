@@ -1501,6 +1501,7 @@ vendor/lib64/libbase64.so|fa0f461914c0adda22c734c755512fdaf897eeaa
 vendor/lib64/libcpion.so|04577591c6e772730453da2c9ba4b94a5edd9b1a
 vendor/lib64/libdrmfs.so|a21f9505fac81e4f0a307d7f7a51efab61d9d0cb
 vendor/lib64/libdrmtime.so|584eb3aff2ee6e6dcbe554fa1f0d96ac4db8c192
+vendor/lib64/libminksocket.so;DISABLE_CHECKELF|33a9e55842c1927539b8ed5d30bb3ddb12599a5e
 vendor/lib64/libops.so|a90d77de5c6adbd206a3fea0690fd37650ffc05a
 vendor/lib64/libqisl.so|c79719eebc094c2af9561e8df2c158638b111b70
 vendor/lib64/librmp.so|3c40d44ec285ac1cbb86721849aa45f623c735e7
@@ -1866,8 +1867,8 @@ vendor/lib64/com.qualcomm.qti.imscmservice@2.1.so;MODULE_SUFFIX=_vendor|ec5dd17c
 vendor/lib64/com.qualcomm.qti.imscmservice@2.2.so;MODULE_SUFFIX=_vendor|ce531bdccb846709e0298114c9eca4d3d4738d78
 vendor/lib64/com.qualcomm.qti.uceservice@2.0.so;MODULE_SUFFIX=_vendor|9820b2833c3f6b9d7723b9970a72b00ca5f90b9f
 vendor/lib64/com.qualcomm.qti.uceservice@2.1.so;MODULE_SUFFIX=_vendor|108cd98eeab7e813f966b394ccea3a288cab8853
-vendor/lib64/com.qualcomm.qti.uceservice@2.2.so|6b5c75585f0fde6662fef7e9e690a0af4a0bcba0
-vendor/lib64/com.qualcomm.qti.uceservice@2.3.so|b219df1d02130d5932c6c7d709d76ab08c424f1d
+vendor/lib64/com.qualcomm.qti.uceservice@2.2.so;MODULE_SUFFIX=_vendor|6b5c75585f0fde6662fef7e9e690a0af4a0bcba0
+vendor/lib64/com.qualcomm.qti.uceservice@2.3.so;MODULE_SUFFIX=_vendor|b219df1d02130d5932c6c7d709d76ab08c424f1d
 vendor/lib64/lib-imscmservice.so|e3559e804359dd90cda664e2fc415a1d2f42d29b
 vendor/lib64/lib-imsdpl.so|7ccdd227d3cbc11ffea25f8259068a4038015353
 vendor/lib64/lib-imsqimf.so|d9dd4113767b4e6034b787baa59b5aac92a5b041

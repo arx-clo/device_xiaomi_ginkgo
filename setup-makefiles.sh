@@ -54,6 +54,8 @@ function lib_to_package_fixup_vendor_variants() {
             com.qualcomm.qti.imscmservice@2.2 | \
             com.qualcomm.qti.uceservice@2.0 | \
             com.qualcomm.qti.uceservice@2.1 | \
+            com.qualcomm.qti.uceservice@2.2 | \
+            com.qualcomm.qti.uceservice@2.3 | \
             vendor.qti.hardware.data.* | \
             vendor.qti.latency* | \
             vendor.qti.hardware.fm@1.0 | \
