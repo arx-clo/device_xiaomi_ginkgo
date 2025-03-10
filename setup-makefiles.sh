@@ -48,6 +48,7 @@ function lib_to_package_fixup_vendor_variants() {
     fi
 
     case "$1" in
+            libmmosal | \
             com.qualcomm.qti.dpm.api@1.0 | \
             com.qualcomm.qti.imscmservice@2.0 | \
             com.qualcomm.qti.imscmservice@2.1 | \
@@ -59,11 +60,13 @@ function lib_to_package_fixup_vendor_variants() {
             vendor.qti.hardware.qccvndhal@1.0 | \
             vendor.qti.hardware.qccsyshal@1.0 | \
             vendor.qti.hardware.data.* | \
+            vendor.qti.data.* | \
+            vendor.qti.hardware.radio.* | \
             vendor.qti.latency* | \
             vendor.qti.hardware.fm@1.0 | \
-            vendor.qti.ims.callinfo@1.0 | \
-            vendor.qti.ims.rcsconfig@1.0 | \
-            vendor.qti.ims.rcsconfig@1.1 | \
+            vendor.qti.hardware.mwqemadapter@1.0 | \
+            vendor.qti.hardware.slmadapter@1.0 | \
+            vendor.qti.ims.* | \
             vendor.qti.imsrtpservice@3.0 | \
             vendor.dolby.hardware.dms@2.0)
             echo "${1}_vendor"
