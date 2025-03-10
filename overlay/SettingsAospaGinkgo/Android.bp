@@ -1,6 +1,6 @@
 runtime_resource_overlay {
-    name: "TelephonyOverlayGinkgo",
-    theme: "TelephonyOverlayGinkgo",
+    name: "SettingsAospaGinkgo",
+    theme: "SettingsAospaGinkgo",
     sdk_version: "current",
     vendor: true,
 }

@@ -13,7 +13,7 @@
 // limitations under the License.
 
 runtime_resource_overlay {
-    name: "GinkgoMiuiCamera",
+    name: "NoCutoutGinkgo",
     sdk_version: "current",
     vendor: true,
 }

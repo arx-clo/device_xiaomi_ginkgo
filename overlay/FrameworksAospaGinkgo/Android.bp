@@ -1,6 +1,6 @@
 runtime_resource_overlay {
-    name: "SystemUIOverlayGinkgo",
-    theme: "SystemUIOverlayGinkgo",
+    name: "FrameworksAospaGinkgo",
+    theme: "FrameworksAospaGinkgo",
     sdk_version: "current",
     vendor: true,
 }

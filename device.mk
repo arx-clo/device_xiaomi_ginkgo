@@ -13,22 +13,15 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
 
 # RRO Overlays
 PRODUCT_PACKAGES += \
-    CarrierConfigOverlayGinkgo \
-    FrameworksOverlayGinkgo \
-    FrameworksOverlayWillow \
-    NoCutoutOverlayGinkgo \
-    NotchBarKillerOverlayGinkgo\
-    SettingsLibOverlayGinkgo \
-    SettingsOverlayGinkgo \
-    SettingsProviderOverlayGinkgo \
-    SystemUIOverlayGinkgo \
-    TelephonyOverlayGinkgo \
-    TetheringOverlayGinkgo \
-    WifiOverlayGinkgo \
-    GinkgoMiuiCamera \
-    GinkgoNoCutoutOverlay \
-    NotchBarKiller \
-    WillowFrameworkRes
+    CarrierConfigAospaGinkgo \
+    FrameworksAospaGinkgo \
+    FrameworksAospaWillow \
+    SettingsAospaGinkgo \
+    SettingsLibAospaGinkgo \
+    SystemUIAospaGinkgo \
+    MiuiCameraGinkgo \
+    NoCutoutGinkgo \
+    NotchBarKillerGinkgo
 
 # ANT+
 PRODUCT_PACKAGES += \
@@ -324,6 +317,7 @@ TARGET_COMMON_QTI_COMPONENTS := \
     av \
     bt \
     perf \
+    overlay \
     usb \
     vibrator \
     wfd \
